@@ -12,11 +12,6 @@ public class ProfileAccount
 
     public FollowData follows { get; set; } = new FollowData();
 }
-public class FollowData
-{
-    public List<ProfileAccount> followers = new List<ProfileAccount>();
-    public List<ProfileAccount> following = new List<ProfileAccount>();
-}
 
     
 

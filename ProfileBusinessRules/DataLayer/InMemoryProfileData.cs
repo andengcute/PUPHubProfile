@@ -12,6 +12,7 @@ public class InMemoryProfileData
 	public InMemoryProfileData()
 	{
 		CreateProfileAccounts();
+		SetFollowingAndFollowers();
 	}
 	
 	public void CreateProfileAccounts() 
@@ -89,71 +90,93 @@ public class InMemoryProfileData
 		profileAccounts.Add(profile5);
 		profileAccounts.Add(profile6);
 		
-		
-	   //user Following
-		user.follows.following.Add(profile3);
-		user.follows.following.Add(profile5);
-		user.follows.following.Add(profile2);
-		user.follows.following.Add(profile6);
-
-	   //user Followers
-	    user.follows.followers.Add(profile2);
-		user.follows.followers.Add(profile3);
-		user.follows.followers.Add(profile4);
-		user.follows.followers.Add(profile5);
-		user.follows.followers.Add(profile6);
-	
-		
-	      //profile2 Following	
-		  profile2.follows.following.Add(user);
-		  profile2.follows.following.Add(profile4);
-		  profile2.follows.following.Add(profile3);
-		  profile2.follows.following.Add(profile6);
-		
-		  //profile2 Followers	
-	   	  profile2.follows.followers.Add(user);
-		  profile2.follows.followers.Add(profile4);
-		  profile2.follows.followers.Add(profile6);
-	      profile2.follows.followers.Add(profile5);
-		
-		
-	         //profile3 Following	
-		     profile3.follows.following.Add(user);
-	         profile3.follows.following.Add(profile2);
-	         profile3.follows.following.Add(profile4);
-	         profile3.follows.following.Add(profile5);
-
-			 //profile3 Followers	
-		     profile3.follows.followers.Add(user);
-		     profile3.follows.followers.Add(profile2);
-		
-	    
-	           //profile4 Following
-		       profile4.follows.following.Add(user);
-	           profile4.follows.following.Add(profile2);
-
-			   //profile4 Follower
-		       profile4.follows.followers.Add(profile2);
-		       profile4.follows.followers.Add(profile3);
-		       profile4.follows.followers.Add(profile6);
-			
-		
-	               //profile5 Following
-		           profile5.follows.following.Add(user);
-	               profile5.follows.following.Add(profile2);
-
-				   //profile5 Followers	
-		           profile5.follows.followers.Add(user);
-		           profile5.follows.followers.Add(profile3);
-		
-	   
-	                 //profile6 Following
-		             profile6.follows.following.Add(user);
-		             profile6.follows.following.Add(profile2);
-		             profile6.follows.following.Add(profile4);
-
-					 //profile6 Followers
-	            	 profile6.follows.followers.Add(user);
-		             profile6.follows.followers.Add(profile2);
 	}
+	
+	private void SetFollowingAndFollowers()
+        {
+            FollowData followData = new FollowData();
+            followData.SetFollowingAndFollowers(profileAccounts);
+        }
+}
+public class FollowData
+{
+    public List < ProfileAccount > followers = new List < ProfileAccount > ();
+    public List < ProfileAccount > following = new List < ProfileAccount > ();
+
+    public void SetFollowingAndFollowers (List<ProfileAccount> profileAccounts)
+    {
+      ProfileAccount user = profileAccounts[0];
+      ProfileAccount profile2 = profileAccounts[1];
+      ProfileAccount profile3 = profileAccounts[2];
+      ProfileAccount profile4 = profileAccounts[3];
+      ProfileAccount profile5 = profileAccounts[4];
+      ProfileAccount profile6 = profileAccounts[5];
+
+      //user Following
+      user.follows.following.Add (profile3);
+      user.follows.following.Add (profile5);
+      user.follows.following.Add (profile2);
+      user.follows.following.Add (profile6);
+
+      //user Followers
+      user.follows.followers.Add (profile2);
+      user.follows.followers.Add (profile3);
+      user.follows.followers.Add (profile4);
+      user.follows.followers.Add (profile5);
+      user.follows.followers.Add (profile6);
+
+      //profile2 Following    
+      profile2.follows.following.Add (user);
+      profile2.follows.following.Add (profile4);
+      profile2.follows.following.Add (profile3);
+      profile2.follows.following.Add (profile6);
+
+      //profile2 Followers  
+      profile2.follows.followers.Add (user);
+      profile2.follows.followers.Add (profile4);
+      profile2.follows.followers.Add (profile6);
+      profile2.follows.followers.Add (profile5);
+
+      //profile3 Following   
+      profile3.follows.following.Add (user);
+      profile3.follows.following.Add (profile2);
+      profile3.follows.following.Add (profile4);
+      profile3.follows.following.Add (profile5);
+
+      //profile3 Followers   
+      profile3.follows.followers.Add (user);
+      profile3.follows.followers.Add (profile2);
+
+
+      //profile4 Following
+      profile4.follows.following.Add (user);
+      profile4.follows.following.Add (profile2);
+
+      //profile4 Follower
+      profile4.follows.followers.Add (profile2);
+      profile4.follows.followers.Add (profile3);
+      profile4.follows.followers.Add (profile6);
+
+
+      //profile5 Following
+      profile5.follows.following.Add (user);
+      profile5.follows.following.Add (profile2);
+
+      //profile5 Followers 
+      profile5.follows.followers.Add (user);
+      profile5.follows.followers.Add (profile3);
+
+
+      //profile6 Following
+      profile6.follows.following.Add (user);
+      profile6.follows.following.Add (profile2);
+      profile6.follows.following.Add (profile4);
+
+      //profile6 Followers
+      profile6.follows.followers.Add (user);
+      profile6.follows.followers.Add (profile2);
+
+
+    }
+
 }
