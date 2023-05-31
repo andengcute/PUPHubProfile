@@ -2,7 +2,7 @@ namespace DataLayer;
 
 public class InMemoryProfileData
 {	
-	public List <ProfileAccount> profileAccounts = new List <ProfileAccount>();
+	public static List <ProfileAccount> profileAccounts = new List <ProfileAccount>();
 	
 	public List <ProfileAccount> GetProfileAccounts()
 	{
@@ -95,7 +95,7 @@ public class InMemoryProfileData
 	private void SetFollowingAndFollowers()
         {
             FollowData followData = new FollowData();
-            followData.SetFollowingAndFollowers(profileAccounts);
+            followData.SetFollowingAndFollowers();
         }
 }
 public class FollowData
@@ -103,14 +103,14 @@ public class FollowData
     public List < ProfileAccount > followers = new List < ProfileAccount > ();
     public List < ProfileAccount > following = new List < ProfileAccount > ();
 
-    public void SetFollowingAndFollowers (List<ProfileAccount> profileAccounts)
+    public void SetFollowingAndFollowers ()
     {
-      ProfileAccount user = profileAccounts[0];
-      ProfileAccount profile2 = profileAccounts[1];
-      ProfileAccount profile3 = profileAccounts[2];
-      ProfileAccount profile4 = profileAccounts[3];
-      ProfileAccount profile5 = profileAccounts[4];
-      ProfileAccount profile6 = profileAccounts[5];
+      ProfileAccount user = InMemoryProfileData.profileAccounts[0];
+      ProfileAccount profile2 = InMemoryProfileData.profileAccounts[1];
+      ProfileAccount profile3 = InMemoryProfileData.profileAccounts[2];
+      ProfileAccount profile4 = InMemoryProfileData.profileAccounts[3];
+      ProfileAccount profile5 = InMemoryProfileData.profileAccounts[4];
+      ProfileAccount profile6 = InMemoryProfileData.profileAccounts[5];
 
       //user Following
       user.follows.following.Add (profile3);
